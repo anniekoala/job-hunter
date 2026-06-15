@@ -1,0 +1,29 @@
+{
+  "_comment": "Copy this file to job_search_preferences.json and fill in your own targets. This file drives the Job Scout agent so it searches for YOUR roles, not someone else's. It is git-ignored.",
+
+  "target_roles": {
+    "_comment": "What kind of work you want. Titles + the themes that matter to you.",
+    "titles": ["e.g. Product Manager", "e.g. Program Manager"],
+    "themes": ["e.g. fintech", "e.g. developer tools", "e.g. trust & safety"],
+    "seniority": "e.g. Senior / Lead / Manager"
+  },
+
+  "target_companies": {
+    "_comment": "Companies you want the scout to check first. Leave empty to search broadly.",
+    "priority": ["Company 1", "Company 2"],
+    "also_consider": ["e.g. mid-size companies in the same space"]
+  },
+
+  "location": {
+    "_comment": "Where you can work. Used as a hard filter by the scout.",
+    "countries": ["e.g. United States"],
+    "cities": [],
+    "remote_ok": true
+  },
+
+  "filters": {
+    "_comment": "Optional hard excludes so the scout never wastes your time.",
+    "exclude_role_types": ["e.g. hands-on coding", "e.g. pure sales"],
+    "min_fit_score": 7.0
+  }
+}

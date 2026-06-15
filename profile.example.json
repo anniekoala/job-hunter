@@ -1,0 +1,69 @@
+{
+  "_comment": "Copy this file to my_private_profile.json and fill in your own data. my_private_profile.json is git-ignored and never leaves your machine. The onboarding agent can build this file for you from an existing resume or by interview.",
+
+  "personal_info": {
+    "full_name": "Your Name",
+    "email": "you@example.com",
+    "phone": "+1 555-000-0000",
+    "linkedin": "linkedin.com/in/yourprofile",
+    "location": "City, Country",
+    "credentials_suffix": "PMP · CSM"
+  },
+
+  "education": [
+    {
+      "degree": "Master of ... ",
+      "institution": "University Name",
+      "graduation_date": "Mon YYYY"
+    },
+    {
+      "degree": "Bachelor of ...",
+      "institution": "University Name",
+      "graduation_date": "Mon YYYY"
+    }
+  ],
+
+  "certifications": [
+    "Certification 1",
+    "Certification 2"
+  ],
+
+  "work_history": [
+    {
+      "company": "Company A",
+      "title": "Your Title",
+      "location": "City, Country",
+      "period": "Mon YYYY – Present",
+      "highlights": [
+        "A concrete achievement with a real number or outcome.",
+        "Another bullet describing scope, stakeholders, and impact."
+      ]
+    },
+    {
+      "company": "Company B",
+      "title": "Your Earlier Title",
+      "location": "City, Country",
+      "period": "Mon YYYY – Mon YYYY",
+      "highlights": [
+        "What you owned and what changed because of you."
+      ]
+    }
+  ],
+
+  "skills": {
+    "domain": ["Your domain skill 1", "Your domain skill 2"],
+    "tools": ["Tool 1", "Tool 2"],
+    "languages": ["English"]
+  },
+
+  "skills_customization": {
+    "_comment": "Optional. If you want a specific skill family listed first (e.g. AI tools), put it here in order.",
+    "priority_skills": []
+  },
+
+  "restricted_keywords": {
+    "_comment": "Optional. Words to strip from your resume, and substitutions to apply.",
+    "remove": [],
+    "use_instead": {}
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "version": 2,
+  "workflow": "job-application-copilot",
+  "description": "A manually-driven, status-tracked job application pipeline. The human decides to apply, submits externally, and triggers interview prep only after an interview invite. No agent ever submits an application on the human's behalf.",
+  "driver": "human-manual",
+  "stages": [
+    {
+      "id": "onboarding",
+      "agent": "onboarding",
+      "trigger": "first run only (no profile yet)",
+      "produces": "my_private_profile.json + job_search_preferences.json (both git-ignored)",
+      "next": "run the scout, or build an application directly"
+    },
+    {
+      "id": "scout",
+      "agent": "job-scout",
+      "trigger": "scheduled-or-manual",
+      "produces": "chat shortlist (+ optional log)",
+      "next": "the human picks one job to apply to"
+    },
+    {
+      "id": "build",
+      "agent": "application-builder",
+      "trigger": "manual: the human selected a job",
+      "produces": "tailored resume (PDF/DOCX) + cover letter + tailoring.json",
+      "next": "the human reviews and approves materials"
+    },
+    {
+      "id": "prep",
+      "agent": "interview-coach",
+      "trigger": "manual: the human received an interview invite",
+      "produces": "interview_prep.md + mock interview in chat",
+      "next": "the human walks into the interview ready"
+    }
+  ],
+  "stateMachine": {
+    "initial": "selected",
+    "transitions": {
+      "selected": ["building", "archived"],
+      "building": ["materials-ready", "selected", "archived"],
+      "materials-ready": ["applied", "building", "archived"],
+      "applied": ["interview-invited", "rejected", "archived"],
+      "interview-invited": ["interview-prep", "archived"],
+      "interview-prep": ["done", "archived"],
+      "done": [],
+      "rejected": [],
+      "archived": []
+    },
+    "realWorldGates": {
+      "materials-ready -> applied": "The human submits on the company site, then marks applied. No agent submits.",
+      "applied -> interview-invited": "The human marks this only when the employer actually invites an interview."
+    }
+  },
+  "agents": {
+    "onboarding": {
+      "prompt": "agents/onboarding.md",
+      "output": "my_private_profile.json + job_search_preferences.json"
+    },
+    "job-scout": {
+      "prompt": "agents/job-scout.md",
+      "reads": "job_search_preferences.json",
+      "output": "chat report + optional shortlist log"
+    },
+    "application-builder": {
+      "prompt": "agents/application-builder.md",
+      "reuses": [
+        "skills/job-application-architect/SKILL.md",
+        "skills/resume-writer/SKILL.md",
+        "skills/cover-letter-writer/SKILL.md",
+        "scripts/render_resume_pdf.mjs",
+        "scripts/render_resume_docx.mjs",
+        "scripts/measure_html.mjs"
+      ],
+      "output": "outputs/applications/<slug>/resume.* + cover_letter.md + tailoring.json"
+    },
+    "interview-coach": {
+      "prompt": "agents/interview-coach.md",
+      "output": "outputs/applications/<slug>/interview_prep.md"
+    }
+  },
+  "guardrails": {
+    "privateData": "my_private_profile.json and job_search_preferences.json stay git-ignored; never commit personal data.",
+    "onlyActiveJobs": "Job Scout only recommends roles whose official link is verified active (not 404 / closed).",
+    "humanApprovalRequired": true,
+    "autoSubmissionAllowed": false,
+    "noFabrication": "No agent invents experience, titles, metrics, or credentials not in the profile or the base resumes.",
+    "deAiPass": "Recommended: run every resume and cover letter through a de-AI (humanizer) pass before showing it, if the humanizer skill is installed."
+  }
+}

@@ -1,0 +1,36 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Logs
+*.log
+
+# ── Private data (NEVER commit) ─────────────────────────────
+# Your real profile. Copy profile.example.json -> my_private_profile.json
+my_private_profile.json
+my_private_profile*.json
+private_profile.json
+
+# Your real job-search preferences (copy the .example.json to create it)
+job_search_preferences.json
+
+# Your real resume library (keep these local only)
+resumes/
+
+# Anything the agents generate for real applications
+outputs/
+**/outputs/
+
+# Personal scratch / experiments
+scratch/
+**/scratch/
+
+# IDE / editor
+.vscode/
+.idea/
+.obsidian/workspace
+.obsidian/workspace.json

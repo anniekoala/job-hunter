@@ -1,0 +1,16 @@
+{
+  "name": "job-application-architect-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local rendering scripts: compile a Markdown resume to PDF/HTML/DOCX and measure page layout.",
+  "scripts": {
+    "pdf": "node render_resume_pdf.mjs",
+    "docx": "node render_resume_docx.mjs",
+    "measure": "node measure_html.mjs",
+    "postinstall": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.45.0"
+  }
+}

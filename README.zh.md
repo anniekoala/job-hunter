@@ -3,7 +3,7 @@
   <a href="README.zh.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-2f72c4?style=for-the-badge" alt="中文"></a>
 </p>
 
-# Job Application Architect · 求职工作流
+# Job Hunter · 求职工作流
 
 一个配置驱动的求职工作区:一套 3-Agent 流程 + 一组 AI agent 技能,带你从「我该投哪些岗位?」一路走到「我准备好面试了」——同时把你所有的个人数据留在本地、永不提交。
 

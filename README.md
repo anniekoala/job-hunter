@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="README.md"><img src="https://img.shields.io/badge/English-2f72c4?style=for-the-badge" alt="English"></a>
+  <a href="README.zh.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-d0d7de?style=for-the-badge" alt="中文"></a>
+</p>
+
 # Job Application Architect
 
 A configuration-driven job-search workspace: a 3-agent workflow plus a set of AI agent skills that take you from "which roles should I apply to?" all the way to "I'm ready for the interview" — while keeping every piece of your personal data local and git-ignored.
